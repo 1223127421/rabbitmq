@@ -1,5 +1,6 @@
 package com;
 
+import com.enums.MqEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -28,7 +29,7 @@ public class ProviderController {
     public String sendFirst() {
         String msg = "生产者发送消息:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS").format(new Date());
         //交换机exchange，队列queue，消息
-        rabbitTemplate.convertAndSend("topicExchange", "topic.first", msg);
+        rabbitTemplate.convertAndSend(MqEnum.PROVIDER1.getExchange(), MqEnum.PROVIDER1.getQueue(), msg);
         return msg;
     }
 }

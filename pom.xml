@@ -11,6 +11,7 @@
     <modules>
         <module>provider</module>
         <module>customer</module>
+        <module>base</module>
     </modules>
 
     <parent>
@@ -84,6 +85,17 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
             <version>1.5.21</version>
+        </dependency>
+        <!-- easyPoi-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-base</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-annotation</artifactId>
+            <version>4.0.0</version>
         </dependency>
 
     </dependencies>
