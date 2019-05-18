@@ -17,26 +17,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TopicConfig {
 
-    @Bean
-    public org.springframework.amqp.core.Queue firstQueue() {
-        return new Queue(MqEnum.PROVIDER1.getQueue());
-    }
-
-    @Bean
-    public TopicExchange topicExchange() {
-        return new TopicExchange(MqEnum.PROVIDER1.getExchange());
-    }
-
     //绑定topic.first队列到routingKey为topic.first，只有topic.first的routingKey消息才发送到此队列
     @Bean
-    public Binding bindingExchange(){
-        return BindingBuilder.bind(firstQueue()).to(topicExchange()).with(MqEnum.PROVIDER1.getQueue());
+    public Binding bindingExchangeBase(){
+        Queue queue=new Queue(MqEnum.PROVIDER1.getQueue());
+        TopicExchange topicExchange=new TopicExchange(MqEnum.PROVIDER1.getExchange());
+        return BindingBuilder.bind(queue).to(topicExchange).with(MqEnum.PROVIDER1.getQueue());
     }
-
-//    @Bean
-//    public Binding bindingExchangeBase(){
-//        Queue queue=new Queue(MqEnum.PROVIDER1.getQueue());
-//        TopicExchange topicExchange=new TopicExchange(MqEnum.PROVIDER1.getExchange());
-//        return BindingBuilder.bind(queue).to(topicExchange).with(MqEnum.PROVIDER1.getQueue());
-//    }
 }
