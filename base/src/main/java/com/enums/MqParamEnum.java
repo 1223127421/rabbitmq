@@ -2,18 +2,19 @@ package com.enums;
 
 /**
  * @Author: wangzhuyi
- * @Date: 2019/5/18 17:21
+ * @Date: 2019/5/20 22:24
  * @Version 1.0
  * @Describe
  */
-public enum MqEnum {
+public enum MqParamEnum {
 
-    PROVIDER1("topicExchange", "topic.first");
+    ORDER("exchange.order", "queue.order"),
+    MQ_PARAM2("exchange.name2", "queue.name2");
 
     private String exchange;
     private String queue;
 
-    MqEnum(String exchange, String queue) {
+    MqParamEnum(String exchange, String queue) {
         this.exchange = exchange;
         this.queue = queue;
     }
@@ -32,4 +33,5 @@ public enum MqEnum {
 
     public void setQueue(String queue) {
         this.queue = queue;
-    }}
+    }
+}

@@ -27,11 +27,12 @@ public class TopicConfig {
         return new TopicExchange(MqParamEnum.ORDER.getExchange());
     }
 
+
     //绑定队列getQueue1到交换机getTopicExchange1，并使用匹配规则匹配队列
     //匹配规则可以是.# ,.*
     @Bean
     Binding bind1() {
-        //  return BindingBuilder.bind(getQueue1()).to(getTopicExchange1()).with(".#");
+//        return BindingBuilder.bind(getQueue1()).to(getTopicExchange1()).with(".#");
         return BindingBuilder.bind(getQueue1()).to(getTopicExchange1()).with(MqParamEnum.ORDER.getQueue());
     }
 }
